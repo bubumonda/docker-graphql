@@ -30,7 +30,7 @@ jobs:
     - name: Push docker image
       run: |
         docker push sebstiian/docker-graphql:0.0.2
-        docker push sebstiian/docker-graphql:latest
+        docker push sebstiian/docker-graphql
 
 
         
