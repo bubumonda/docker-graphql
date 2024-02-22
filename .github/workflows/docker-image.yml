@@ -26,11 +26,11 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build docker image
       run: |
-        docker buildx build -t sebstiian/docker-graphql:0.0.2 .
+        docker buildx build -t sebstiian/docker-graphql:latest .
     - name: Push docker image
       run: |
-        docker push sebstiian/docker-graphql:0.0.2
-        docker push sebstiian/docker-graphql
+        #docker push sebstiian/docker-graphql:0.0.2
+        docker push sebstiian/docker-graphql:latest
 
 
         
