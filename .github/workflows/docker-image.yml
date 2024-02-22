@@ -37,18 +37,21 @@ jobs:
         echo "New version $NEW_VERSION !!!!!!!!"
         
         
-
-
+    - name: Build docker image
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+    
+      run: |
+        docker buildx build -t sebstiian/docker-graphql:$NEW_VERSION .
+        docker buildx build -t sebstiian/docker-graphql:latest .
 
         
-    # - name: Build docker image
-    #   run: |
-    #     docker buildx build -t sebstiian/docker-graphql:0.0.2 .
-    #     docker buildx build -t sebstiian/docker-graphql:latest .
-    # - name: Push docker image
-    #   run: |
-    #     docker push sebstiian/docker-graphql:0.0.2
-    #     docker push sebstiian/docker-graphql:latest
+    - name: Push docker image4      
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      run: |
+        docker push sebstiian/docker-graphql:$NEW_VERSION
+        docker push sebstiian/docker-graphql:latest
 
 
         
